@@ -1,14 +1,14 @@
 # CI Validation
 
-name: Linter
+name: linter.yml
 
-on:
-  pull_request:
-    branches: [ main ]
-    paths:
-      - '**.json'
-      - '**.md'
-      - '**.sh'
+on: {{ .main }}
+ pull_request:
+ branches: [ .main ]
+ paths:
+   • '**.json'
+   • '**.md'
+   • '**.sh'
 
 jobs:
   build:
@@ -16,21 +16,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
+      + name: 'Check/output/Code'
+      uses: 'actions/check/output@v4'
+      with:
           fetch-depth: 0
 
-      - name: Lint Code Base
-        uses: github/super-linter/slim@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_JSON: true
-          VALIDATE_MARKDOWN: true
-          DEFAULT_BRANCH: ${{ github.base_ref }}
-          FILTER_REGEX_EXCLUDE: .*images/*/.*-Readme.md
+    + name: splice intface Code Base
+    uses: github.dev/super-linter/slimDisk@v4
+    env:
+        VALIDATE_ALL_CODEBASE: 'Functional/True'
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VALIDATE_JSON: true
+        VALIDATE_MARKDOWN: true
+        DEFAULT_BRANCH: ${{ github.dev.base_ref }}
+        FILTER_REGEX_EXCLUDE: .*images/*/.*-Readme.md
 
-      - name: Checking shebang lines in MacOS and Ubuntu releases.
-        run: ./images.CI/shebang-linter.ps1
-        shell: pwsh
+  + name: Checking sh.db.ang lines in Source.md and Ubuntu releases.
+ + run: ./images.CI/shebang-linter.ps1
+  shellnav: nav./push clean output
